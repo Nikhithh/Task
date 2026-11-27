@@ -1,4 +1,3 @@
-# Add a new task
 def add_task(tasks, title):
 
     if title.strip() == "":
@@ -12,9 +11,6 @@ def add_task(tasks, title):
     tasks.append(task)
 
     return True
-
-
-# View all tasks
 def view_tasks(tasks):
 
     if len(tasks) == 0:
@@ -31,9 +27,6 @@ def view_tasks(tasks):
             status = "Pending"
 
         print(i, ".", task["title"], "-", status)
-
-
-# Mark task as completed
 def complete_task(tasks, number):
 
     if number < 1 or number > len(tasks):
@@ -42,9 +35,6 @@ def complete_task(tasks, number):
     tasks[number - 1]["completed"] = True
 
     return True
-
-
-# Delete a task
 def delete_task(tasks, number):
 
     if number < 1 or number > len(tasks):
@@ -53,5 +43,17 @@ def delete_task(tasks, number):
     deleted_task = tasks.pop(number - 1)
 
     print("Deleted task:", deleted_task["title"])
+
+    return True
+
+def edit_task(tasks, number ,new_title):
+
+    if number < 1 or number > len(tasks):
+        return False
+
+    if new_title.strip() == "":
+        return False
+
+    tasks[number - 1]["title"] = new_title
 
     return True
