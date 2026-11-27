@@ -10,7 +10,7 @@ from utils.logger import log
 
 tasks = []
 while True:
-
+    print("Nikhith")
     print("\n===== TASK MANAGER =====")
     print("1. Add Task")
     print("2. View Tasks")
@@ -108,3 +108,4 @@ while True:
     else:
 
         print("Invalid menu choice. Please try again.")
+    
