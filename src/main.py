@@ -2,17 +2,13 @@ from services.task_service import (
     add_task,
     view_tasks,
     complete_task,
-    delete_task
+    delete_task,
+    edit_task
 )
 
 from utils.logger import log
 
-
-# Store all tasks
 tasks = []
-
-
-# Main menu
 while True:
 
     print("\n===== TASK MANAGER =====")
@@ -20,11 +16,11 @@ while True:
     print("2. View Tasks")
     print("3. Mark Task as Completed")
     print("4. Delete Task")
-    print("5. Exit")
+    print("5. Edit Task")
+    print("6. Exit")
 
     choice = input("Enter your choice: ")
 
-    # Add task
     if choice == "1":
 
         title = input("Enter task title: ")
@@ -35,12 +31,12 @@ while True:
         else:
             print("Task title cannot be empty.")
 
-    # View tasks
+
     elif choice == "2":
 
         view_tasks(tasks)
 
-    # Complete task
+    
     elif choice == "3":
 
         if len(tasks) == 0:
@@ -61,7 +57,7 @@ while True:
         except ValueError:
             print("Please enter a valid number.")
 
-    # Delete task
+   
     elif choice == "4":
 
         if len(tasks) == 0:
@@ -82,8 +78,29 @@ while True:
         except ValueError:
             print("Please enter a valid number.")
 
-    # Exit
+  
     elif choice == "5":
+
+        if len(tasks) == 0:
+            print("No tasks available.")
+            continue
+
+        view_tasks(tasks)
+
+        try:
+            number = int(input("Enter task number to edit: "))
+            new_title = input("Enter new task title: ")
+
+            if edit_task(tasks, number, new_title):
+                print("Task edited successfully!")
+                log("Task edited")
+            else:
+                print("Invalid task number or empty title.")
+
+        except ValueError:
+            print("Please enter a valid number.")
+
+    elif choice == "6":
 
         print("Thank you for using Task Manager!")
         break
