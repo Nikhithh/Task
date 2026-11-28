@@ -46,7 +46,7 @@ def delete_task(tasks, number):
 
     return True
 
-def edit_task(tasks, number ,new_title):
+def edit_task(tasks, number, new_title):
 
     if number < 1 or number > len(tasks):
         return False
@@ -57,3 +57,4 @@ def edit_task(tasks, number ,new_title):
     tasks[number - 1]["title"] = new_title
 
     return True
+
